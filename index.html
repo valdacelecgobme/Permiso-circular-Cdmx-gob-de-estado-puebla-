@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación Permiso Sin Placas CDMX</title>
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box;}
+        body {background:#ffffff; padding:20px; font-family:'Times New Roman',serif;}
+        .contenedor {max-width:880px; margin:0 auto; background:#fff; padding:35px; border:1px solid #222;}
+
+        .cabecera-top {display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap;}
+        .titulo-gob {text-align:center; flex-grow:1;}
+        .titulo-gob strong {font-size:18px; color:#8b0000;}
+
+        .folio-fecha {margin:15px 0;}
+        .folio-fecha .folio {font-size:16px; color:#8b0000; font-weight:bold;}
+
+        h1 {text-align:center; font-size:28px; text-transform:uppercase; margin:25px 0; color:#000; line-height:1.4;}
+
+        .bloque-datos {border:2px solid #222; padding:18px; margin:25px 0;}
+        .fila-datos {display:flex; justify-content:space-between; margin:8px 0; flex-wrap:wrap;}
+        .celda {width:48%;}
+        .celda strong {font-size:15px;}
+
+        .texto-vigencia {text-align:center; font-weight:bold; margin:15px 0; color:#8b0000;}
+        .texto-legal {font-size:14px; line-height:1.6; margin:20px 0; text-align:justify;}
+
+        .atentamente {margin-top:40px;}
+        .firma-nombre {margin-top:30px;}
+        .direccion {margin-top:15px; font-size:13px;}
+
+        .pie-final {margin-top:35px; text-align:center; font-size:12px; border-top:1px solid #222; padding-top:15px;}
+        .liga-oficial {text-align:center; margin-top:10px; font-size:13px;}
+        .liga-oficial a {color:#004499;}
+
+        .validacion {margin:30px 0; padding:20px; border:2px dashed #8b0000; border-radius:8px; background:#fff8f8;}
+        .validacion h2 {text-align:center; font-size:20px; margin-bottom:15px; color:#8b0000;}
+        .caja-folio {text-align:center; margin:15px 0;}
+        .caja-folio input {padding:12px; font-size:16px; width:280px; text-align:center; border:2px solid #333; border-radius:4px;}
+        .btn-validar {padding:12px 25px; font-size:16px; background:#8b0000; color:#fff; border:none; border-radius:4px; cursor:pointer; margin-left:8px; font-weight:bold;}
+        .btn-validar:hover {background:#6b0000;}
+        .resultado {margin-top:20px; padding:15px; font-size:18px; text-align:center; border-radius:4px;}
+        .valido {background:#d4edda; color:#155724; border:2px solid #28a745;}
+        .invalido {background:#f8d7da; color:#721c24; border:2px solid #dc3545;}
+        .reloj {text-align:center; font-size:16px; font-weight:bold; margin:15px 0; color:#333;}
+
+        .documento-completo {display:none;}
+        .documento-completo.activo {display:block; animation:aparecer 0.4s ease-out;}
+        @keyframes aparecer {from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+        @media print {
+            .validacion {display:none !important;}
+            .documento-completo {display:block !important;}
+            body {background:#fff; padding:0;}
+            .contenedor {border:none; padding:0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <!-- CAJITA DE VALIDACIÓN -->
+        <div class="validacion">
+            <h2>✅ VALIDACIÓN DE DOCUMENTO</h2>
+            <div class="caja-folio">
+                <input type="text" id="inputFolio" placeholder="Ingrese el folio para validar" maxlength="30">
+                <button class="btn-validar" onclick="validarFolio()">VALIDAR</button>
+            </div>
+            <div id="resultado" class="resultado"></div>
+            <div id="fechaHora" class="reloj"></div>
+        </div>
+
+        <!-- DOCUMENTO COMPLETO CON ENCABEZADO -->
+        <div id="documentoCompleto" class="documento-completo">
+            <div class="cabecera-top">
+                <div>
+                    <img src="TU_URL_RAW_GITHUB/logo-cdmx-escudo.png" 
+                         alt="Escudo Gobierno CDMX"
+                         style="height:90px;">
+                </div>
+                <div class="titulo-gob">
+                    <strong>CIUDAD DE MÉXICO</strong><br>
+                    CUARTA DE LA TRANSFORMACIÓN<br>
+                    <strong>SECRETARÍA DE MOVILIDAD</strong>
+                </div>
+                <div>
+                    <img src="TU_URL_RAW_GITHUB/logo-margarita-maza.png" 
+                         alt="Logo Margarita Maza"
+                         style="height:90px;">
+                </div>
+            </div>
+
+            <div class="folio-fecha">
+                <div class="folio">Folio: 132361</div>
+                <div>Ciudad de México, a 06 de noviembre de 2026</div>
+                <div>Oficio No: SEMOVI/DGST/PPCDMX/16042090</div>
+            </div>
+
+            <h1>PERMISO PARA CIRCULAR SIN<br>PLACAS, TARJETA DE CIRCULACIÓN Y<br>ENGOMADO</h1>
+
+            <div class="bloque-datos">
+                <div class="fila-datos">
+                    <div class="celda"><strong>MARCA:</strong> VENTO</div>
+                    <div class="celda"><strong>SERIE:</strong> 3MUADBD2P1023288</div>
+                </div>
+                <div class="fila-datos">
+                    <div class="celda"><strong>MODELO:</strong> LITHIUM 150</div>
+                    <div class="celda"><strong>MOTOR:</strong> S/N</div>
+                </div>
+                <div class="fila-datos">
+                    <div class="celda"><strong>AÑO:</strong> 2023</div>
+                    <div class="celda"><strong>CLASE:</strong> MOTOCICLETA</div>
+                </div>
+                <div class="fila-datos">
+                    <div class="celda"><strong>COLOR:</strong> NEGRO</div>
+                    <div class="celda"><strong>CONTRIBUYENTE:</strong> JAIR ISAAC RIVERA ESCOBAR</div>
+                </div>
+            </div>
+
+            <div class="texto-vigencia">
+                EL PRESENTE DOCUMENTO SOLO ES VÁLIDO EN ORIGINAL Y/O FORMATO DIGITAL Y TIENE UNA VIGENCIA DE 90 DÍAS, A PARTIR DE SU FECHA DE EMISIÓN: 06 DE NOVIEMBRE DE 2026 AL 04 DE FEBRERO DE 2027
+            </div>
+
+            <div class="texto-legal">
+                Lo anterior con fundamento en el artículo 7, fracción I, IV, V, X, XI, XVIII, 200, XXII, XXXIII, XXXIX, XLVI, artículos 21, 20, 51, 52, 54, 55, 58, 57, 62, 64, 65, 67, 158, fracciones I, II, IV, VII, IX, X, XVI, párrafo en último, de la ley de transporte y vialidad del Distrito Federal 23, 29, 34, 40, 74, 75, 90 del reglamento de transporte del Distrito Federal artículo 242 fracción V del código financiero del Distrito Federal.<br><br>
+                Sin más por el momento, reciba cordiales saludos.
+            </div>
+
+            <div class="atentamente">
+                <strong>ATENTAMENTE</strong>
+                <div class="firma-nombre">
+                    <strong>HÉCTOR ULISES GARCÍA NIETO</strong><br>
+                    SECRETARIO DE MOVILIDAD DE LA CIUDAD DE MÉXICO
+                </div>
+                <div class="direccion">
+                    Álvaro Obregón 269, Colonia Roma Norte, Alcaldía Cuauhtémoc, C.P. 06700<br>
+                    Tel: LOCATEL 5658‑1111 | Conmutador SEMOVI en línea: atencionciudadana.cdmx.gob.mx
+                </div>
+            </div>
+
+            <div class="pie-final">
+                VALIDACIÓN DATA MATRIX · USO EXCLUSIVO SEMOVI
+            </div>
+            <div class="liga-oficial">
+                Validación oficial en el portal de la Secretaría de Movilidad CDMX:
+                <a href="https://semovi.cdmx.gob.mx" target="_blank">semovi.cdmx.gob.mx</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function actualizarReloj() {
+            const ahora = new Date();
+            const opciones = {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+            };
+            document.getElementById('fechaHora').textContent = ahora.toLocaleDateString('es-MX', opciones);
+        }
+        setInterval(actualizarReloj, 1000);
+        actualizarReloj();
+
+        const FOLIO_CORRECTO = "132361";
+        function normalizar(val) {
+            return val.trim().replace(/[-_\s]/g,'');
+        }
+        function validarFolio() {
+            const input = normalizar(document.getElementById('inputFolio').value);
+            const resultado = document.getElementById('resultado');
+            const documento = document.getElementById('documentoCompleto');
+            if (input === normalizar(FOLIO_CORRECTO)) {
+                resultado.className = "resultado valido";
+                resultado.innerHTML = "✅ DOCUMENTO VÁLIDO Y VERIFICADO<br>Permiso para circular sin placas CDMX<br>Vigencia: 06‑11‑2026 al 04‑02‑2027";
+                documento.classList.add('activo');
+                documento.scrollIntoView({behavior:'smooth'});
+            } else {
+                resultado.className = "resultado invalido";
+                resultado.innerHTML = "❌ FOLIO NO ENCONTRADO<br>Verifique el número e intente nuevamente";
+                documento.classList.remove('activo');
+            }
+        }
+        document.getElementById('inputFolio').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') validarFolio();
+        });
+    </script>
+</body>
+  </html>
+  
